@@ -1,0 +1,5 @@
+[
+    {"originImage":"image.tif",
+    "mask":"nanbeicao_mask.shp",
+     "type":"clip"}
+]
