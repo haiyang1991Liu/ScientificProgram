@@ -1,0 +1,43 @@
+%vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.leaflet-control-container) {
+  display: none;
+}
+
+:global(.ant-select-dropdown) {
+  z-index: 9999;
+}
+
+:global(.leaflet-popup-pane) {
+  z-index: 9999;
+}
+
+:global(.ant-picker-dropdown) {
+  z-index: 10000;
+}
+
+:global(.ant-tooltip) {
+  z-index: 9999;
+}
+:global(.iconqidian-copy){
+  color: #7fdf7f;
+}
+:global(.iconzhongdian){
+  color: #ff8d8d;
+}
+:global(.ant-modal-mask){
+     z-index: 9999;
+}
+:global(.ant-modal-wrap){
+     z-index: 9999;
+}

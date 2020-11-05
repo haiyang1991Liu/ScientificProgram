@@ -1,0 +1,39 @@
+.Auth_box {
+  height: 100%;
+  width: 100%;
+  background: url("../../assets/images/timg.jpg") no-repeat;
+  background-size: 100%;
+}
+.Auth_Login {
+  width: 4.2rem;
+  height: 4rem;
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0.01rem 0.01rem 0.1rem rgba(0, 0, 0, 0.7);
+
+  h1 {
+    text-align: center;
+    padding-bottom: 0.2rem;
+    color: #fff;
+  }
+}
+
+.Auth_Form {
+  padding: 0.2rem 0.1rem;
+  width: 100%;
+  height: 4rem;
+  float: right;
+  label {
+    color: #fff;
+  }
+  .Auth_Code{
+    display: flex;
+    img{
+      width: 1.0rem;
+      margin-left: .1rem;
+      cursor: pointer;
+    }
+  }
+}
