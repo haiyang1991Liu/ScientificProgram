@@ -1,3 +1,7 @@
+@import '~antd/dist/antd.css';
+*{
+    box-sizing: border-box;
+}
 #App {
     height:100%;
     width:100%;
@@ -38,7 +42,6 @@
             border:1px solid blue;
        
             .item{
-                
                 color:white;
                 background:rgb(1,104,183);
                 width:200px;

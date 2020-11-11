@@ -4,12 +4,10 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:   登陆界面
- * @LastEditTime: 2020-08-20 11:17:54
+ * @LastEditTime: 2020-11-11 16:54:16
  */
 import React, { Component } from "react";
 import { Form, Input, Button } from "antd";
-import { connect } from "dva";
-import { JSEncrypt, RSA_PUBLIC_KEY } from "@utils/jsencrypt";
 import styles from "./index.scss";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 const layout = {
@@ -39,19 +37,6 @@ class index extends Component {
    * 登陆提交方法
    */
   onFinish = (values) => {
-    let encrypt = new JSEncrypt();
-    encrypt.setPublicKey(RSA_PUBLIC_KEY);
-    let data = {
-      username: values.username,
-      password: encrypt.encrypt(values.password),
-      t: this.state.t,
-      code: values.code,
-    };
-    this.props.dispatch({
-      type: "Login/in",
-      payload: { params: data },
-      history: this.props.history,
-    });
   };
   /**
    * 更换验证码方法
@@ -145,4 +130,4 @@ class index extends Component {
     );
   }
 }
-export default connect()(index);
+export default index;
