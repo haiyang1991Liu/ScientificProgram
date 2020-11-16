@@ -1,0 +1,29 @@
+.leaflet-top{
+    right: 0!important;
+    .leaflet-control{
+        margin-top: 1.2rem;
+        .leaflet-control-layers-toggle{
+            background:url("../../img/layer.png");
+            width: .36rem;
+            height: .36rem;
+            background-size: .36rem .36rem;
+        }
+        .leaflet-control-layers-list{
+            .leaflet-control-layers-base{
+                label{
+                    div{
+                        input{
+                            width: .18rem;
+                            height: .18rem;
+                        }
+                        span{
+                            font-size: .2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
