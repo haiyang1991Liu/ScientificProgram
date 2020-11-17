@@ -1,0 +1,20 @@
+.change_detection {
+  & :global(.ant-tabs-tab) {
+    border: 0.01rem solid #0068b7 !important;
+    border-bottom-color: #0068b7 !important;
+    min-width: 1rem;
+    padding: 0.04rem 0.16rem !important;
+    margin-right: 0 !important;
+    & :global(.ant-tabs-tab-btn) {
+      color: #0068b7 !important;
+      margin: 0 auto;
+    }
+  }
+  & :global(.ant-tabs-tab-active) {
+    color: #fff !important;
+    background: #0068b7 !important;
+    & :global(.ant-tabs-tab-btn) {
+      color: #fff !important;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+.modal-container {
+  .modal-body {
+    color: #fff;
+    border-radius: 0.05rem;
+    background: #015478;
+    min-width: 5rem;
+    padding: 0.2rem;
+    z-index: 9999;
+    min-height: 3rem;
+    position: absolute;
+    left: 1rem;
+    top: 0.7rem;
+    transition: all 0.3s;
+    opacity: 0;
+    box-shadow: 0.01rem 0.01rem 0.1rem rgba(0, 0, 0, 0.4);
+    .onclose {
+      width: 0.3rem;
+      height: 0.3rem;
+      position: absolute;
+      top: 0.1rem;
+      transform: rotate(45deg);
+      right: 0.1rem;
+      cursor: pointer;
+      z-index: 20;
+    }
+    .onclose::after {
+      content: '';
+      width: 100%;
+      height: 0.02rem;
+      background: #aad5f2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+    .onclose::before {
+      content: '';
+      height: 100%;
+      width: 0.02rem;
+      background: #aad5f2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+    & .modal-hide {
+      position: absolute;
+      left: -0.2rem;
+      top: 50%;
+      width: 0;
+      border-top: 0.11rem solid transparent;
+      border-bottom: 0.11rem solid transparent;
+      border-right: 0.22rem solid #143463;
+      height: 0.8rem;
+      transform: translateY(-50%) rotate(0deg);
+      z-index: 1;
+      cursor: pointer;
+    }
+    & .modal-hide::after,
+    & .modal-hide::before {
+      position: absolute;
+      top: 50%;
+      border-top: 0.11rem solid transparent;
+      border-bottom: 0.11rem solid transparent;
+      border-right: 0.06rem solid transparent;
+      height: 0.2rem;
+      transform: translateY(-50%) rotate(0deg);
+    }
+
+    & .modal-hide::after {
+      content: '';
+      left: 0.08rem;
+      border-left: 0.08rem solid #fff;
+      z-index: 2;
+    }
+    & .modal-hide::before {
+      content: '';
+      border-left: 0.08rem solid #143463;
+      left: 0.04rem;
+      z-index: 3;
+    }
+  }
+
+  .hide {
+    right: -4rem !important;
+    & .modal-hide::after,
+    & .modal-hide::before {
+      transform: translateY(-50%) rotate(180deg);
+    }
+    & .modal-hide::after {
+      left: 0rem;
+    }
+    & .modal-hide::before {
+      left: 0.04rem;
+    }
+  }
+
+  .modal-title {
+    text-align: center;
+    font-size: 0.18rem;
+    padding: 0.1rem;
+    font-weight: bold;
+    background-color: #2a4166;
+  }
+
+  .modal-content {
+    min-height: 1rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .modal-footer {
+    text-align: right;
+
+    .cancel-btn {
+      margin-right: 0.1rem;
+    }
+  }
+
+  .modal-transform {
+    opacity: 1;
+  }
+
+  .modal-out {
+    opacity: 0;
+  }
+}
