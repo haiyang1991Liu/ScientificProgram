@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:   登陆界面
- * @LastEditTime: 2020-11-12 20:44:56
+ * @LastEditTime: 2020-11-17 11:08:12
  */
 import React, { Component } from 'react'
 import Header from '../Header'
@@ -12,7 +12,8 @@ import Footer from '../Footer'
 import RiverSandCapa from '../RiverSandCapa'
 import ContructionProgress from '../ContructionProgress'
 import BadGeoloyMonitor from '../BadGeoloyMonitor'
-import { Route } from 'react-router-dom'
+import SubsidenceMonitor from '../SubsidenceMonitor'
+import { Route,Redirect } from 'react-router-dom'
 class index extends Component {
   constructor(props) {
     // 构造函数
@@ -36,13 +37,19 @@ class index extends Component {
       <>
         <Header />
         <div id="oeperation-panel">
-          <Route path="/" exact component={RiverSandCapa} />
+          <Route path="/RiverSandCapa" exact component={RiverSandCapa} />
           <Route
-            path="/constructionprogress"
+            path="/ContructionProgress"
             exact
             component={ContructionProgress}
           />
-          <Route path="/badgeologymonitor" exact component={BadGeoloyMonitor} />
+          <Route path="/BadGeoloyMonitor" exact component={BadGeoloyMonitor} />
+          <Route
+            path="/SubsidenceMonitor"
+            exact
+            component={SubsidenceMonitor}
+          />
+          <Redirect from="/" to="/RiverSandCapa" />
         </div>
         <Footer LocalTime={currentYear} />
       </>
