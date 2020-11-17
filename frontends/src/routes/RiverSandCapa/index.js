@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 河道含沙界面
- * @LastEditTime: 2020-11-16 22:30:59
+ * @LastEditTime: 2020-11-17 14:54:36
  */
 
 import React, { Component } from 'react'
@@ -13,7 +13,7 @@ import {
   TIANDITU_TOKEN,
   MAP_YGYX_ISERVER,
 } from '@assets/constant/LeafletConstant'
-
+import Options from './components'
 import L from 'leaflet'
 class RiverSandCapa extends Component {
   constructor(props) {
@@ -31,7 +31,12 @@ class RiverSandCapa extends Component {
   }
 
   render() {
-    return <div id="map2D" style={{ width: '100%', height: '100%' }}></div>
+    return (
+      <>
+        <Options />
+        <div id="map2D" style={{ width: '100%', height: '100%' }}></div>
+      </>
+    )
   }
 }
 

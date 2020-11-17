@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+@import './public_.scss';
 * {
   box-sizing: border-box;
 }
@@ -13,6 +14,7 @@
   #oeperation-panel {
     flex: 1;
     overflow: hidden;
+    position: relative;
   }
 }
 .active {

@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.8.2",
     "customize-cra": "^1.0.0",
+    "echarts": "^4.9.0",
+    "echarts-for-react": "^2.0.16",
     "http-proxy-middleware": "^1.0.6",
     "leaflet": "1.6.0",
     "mobx": "^6.0.4",

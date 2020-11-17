@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-16 22:11:45
+ * @LastEditTime: 2020-11-17 18:25:53
  */
 const path = require('path')
 const { override, addDecoratorsLegacy } = require('customize-cra')
@@ -26,6 +26,7 @@ module.exports = override(addDecoratorsLegacy(), (config, env) => {
     '@store': resolve('src/store'),
     '@models': resolve('src/models'),
     '@utils': resolve('src/utils'),
+    '@Modal': resolve('src/components/Modal/Modal.jsx'),
     '@assets': resolve('src/assets'),
     '@routes': resolve('src/routes'),
   }
