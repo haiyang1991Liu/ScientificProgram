@@ -3,17 +3,16 @@
  * @Date: 2020-11-12 16:15:02
  * @Version: 1.0
  * @LastEditors: @yzcheng
- * @Description: 
- * @LastEditTime: 2020-11-16 18:50:05
+ * @Description:
+ * @LastEditTime: 2020-11-16 22:11:45
  */
 const path = require('path')
-
+const { override, addDecoratorsLegacy } = require('customize-cra')
 function resolve(dir) {
   return path.join(__dirname, '.', dir)
 }
 
-/* config-overrides.js */
-module.exports = function override(config, env) {
+module.exports = override(addDecoratorsLegacy(), (config, env) => {
   //do stuff with the webpack config...
   // alias
   config['externals'] = {
@@ -31,4 +30,5 @@ module.exports = function override(config, env) {
     '@routes': resolve('src/routes'),
   }
   return config
-}
+})
+/* config-overrides.js */

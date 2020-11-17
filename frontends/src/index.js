@@ -4,15 +4,17 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-16 18:49:52
+ * @LastEditTime: 2020-11-16 22:27:12
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import { Provider } from 'mobx-react'
-import  stores  from '@models'
+import { configure } from 'mobx'
+import  {stores}  from '@models'
 import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom'
+configure({ enforceActions: 'always' })
 ReactDOM.render(
   <Router>
     <Provider {...stores}>

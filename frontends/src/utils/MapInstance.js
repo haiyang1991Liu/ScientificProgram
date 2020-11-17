@@ -4,14 +4,14 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-16 16:09:46
+ * @LastEditTime: 2020-11-17 09:08:11
  */
 import L from 'leaflet'
 import {
   MAP_INIT_OPTIONS,
-  MAP_FEATUREGROUP,
+  // MAP_FEATUREGROUP,
 } from '@assets/constant/LeafletConstant'
-import { message } from 'antd'
+// import { message } from 'antd'
 class Map {
   constructor(mapId, options) {
     this.map = L.map(mapId, {
