@@ -1,0 +1,41 @@
+.header {
+    height: 0.5rem;
+    transition: all 0.3s;
+    position: relative;
+    .navigation-bar {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      & > :nth-of-type(2) {
+        margin-right: 6rem;
+      }
+      .item {
+        transition: all 0.3s;
+        color: white;
+        font-size: 0.2rem;
+        line-height: 0.5rem;
+        width: 2rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+      }
+      .item:hover {
+        color: blue !important;
+      }
+    }
+    .header_title {
+      text-shadow: 0px 0px 5px #1d3859;
+      font-size: 0.3rem;
+      color: #69b8e3;
+      position: absolute;
+      width: 5rem;
+      top: 50%;
+      font-weight: 900;
+      text-align: center;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      &>img{
+          width: .5rem;
+      }
+    }
+  }
