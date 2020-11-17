@@ -10,36 +10,12 @@
   background-image: url('~@assets/images/background.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  .header {
-    height: 0.5rem;
-  }
   #oeperation-panel {
     flex: 1;
     overflow: hidden;
-    .navigation-bar {
-      display: flex;
-      border: 1px solid blue;
-
-      .item {
-        color: white;
-        background: rgb(1, 104, 183);
-        width: 200px;
-        text-align: center;
-        text-decoration: none;
-        padding-top: 5px;
-        border: 1px solid white;
-      }
-      .item:hover {
-        background-color: yellowgreen;
-      }
-    }
   }
-  .footer {
-    width: 100%;
-    color: white;
-    height: 0.3rem;
-    bottom: 0;
-    line-height: 0.3rem;
-    text-align: center;
-  }
+}
+.active {
+  color: blue !important;
+  text-shadow: 0 0 10px #fff;
 }

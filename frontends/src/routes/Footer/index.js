@@ -4,9 +4,10 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 
- * @LastEditTime: 2020-11-11 17:23:24
+ * @LastEditTime: 2020-11-17 14:49:37
  */
 import React, { Component } from 'react';
+import './index.scss'
 class Footer extends Component {
     componentDidMount() {
         //let getCurrentYear=this.props.getLocalTime();
