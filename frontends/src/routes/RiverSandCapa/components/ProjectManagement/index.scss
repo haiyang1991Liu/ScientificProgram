@@ -1,0 +1,21 @@
+.createProject {
+  .keyWords_icon {
+    width: 0.4rem;
+    height: 0.28rem;
+    line-height: 0.3rem;
+    font-size: 0.2rem;
+    cursor: pointer;
+    color: #fff !important;
+  }
+  .ant-form-item-label{
+     &>label{
+          color: #FFF;
+     }
+  }
+  .ant-upload-list-item-name{
+      color: green;
+  }
+  .project_help{
+      color: #FFF;
+  }
+}
