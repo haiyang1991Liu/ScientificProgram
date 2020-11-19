@@ -4,12 +4,11 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:   ajax请求工具类
- * @LastEditTime: 2020-09-07 11:31:03
+ * @LastEditTime: 2020-11-18 15:41:09
  */
 import axios from 'axios'
-import {getToken} from './auth'
+import { isAuthenticated, logout } from './Session'
 import {Modal,message} from 'antd'
-import {removeToken} from './auth'
 import {ExclamationCircleOutlined} from '@ant-design/icons'
 import {HashRouter} from 'react-router-dom'
 
@@ -24,9 +23,9 @@ server.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencode
 //请求拦截器
 server.interceptors.request.use(
   config => {
-    if (getToken()) {
-      config.headers['Authorization'] = "Bearer " + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
-    }
+    // if (isAuthenticated()) {
+    //   config.headers['Authorization'] = 'Bearer ' + isAuthenticated() // 让每个请求携带自定义token 请根据实际情况自行修改
+    // }
     return config
   },
   error => {
@@ -57,7 +56,7 @@ const authError = debounce((message) => {
     okText: '重新登录',
     cancelText: '取消',
     onOk() {
-      removeToken()
+      logout()
       router.history.push('/login')
       Modal.destroyAll()
     },

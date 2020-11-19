@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 河道含沙界面
- * @LastEditTime: 2020-11-17 14:54:36
+ * @LastEditTime: 2020-11-18 14:24:52
  */
 
 import React, { Component } from 'react'
@@ -22,12 +22,12 @@ class RiverSandCapa extends Component {
     this.state = {}
   }
   componentDidMount() {
-    this.map = map('map2D', {})
-    L.supermap
-      .tiandituTileLayer({ key: TIANDITU_TOKEN, layerType: 'img' })
-      .addTo(this.map.map)
-    L.supermap.tiledMapLayer(MAP_YGYX_ISERVER).addTo(this.map.map)
-    L.control.scale().addTo(this.map.map)
+    this.map = map('map2D', {
+      initBaseLayers: [
+        L.supermap.tiandituTileLayer({ key: TIANDITU_TOKEN, layerType: 'img' }),
+        L.supermap.tiledMapLayer(MAP_YGYX_ISERVER),
+      ],
+    })
   }
 
   render() {

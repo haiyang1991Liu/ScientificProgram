@@ -1,3 +1,11 @@
+/*
+ * @Author: @yzcheng
+ * @Date: 2020-11-12 10:44:28
+ * @Version: 1.0
+ * @LastEditors: @yzcheng
+ * @Description: 
+ * @LastEditTime: 2020-11-18 14:15:18
+ */
 import React, { PureComponent } from 'react'
 
 export default class ErrorBoundary extends PureComponent {
@@ -12,9 +20,9 @@ export default class ErrorBoundary extends PureComponent {
     console.log(state)
   }
   componentDidCatch(error, errorInfo) {
-    console.log('=======================')
+    console.group()
     console.log(error, errorInfo)
-    console.log('=======================')
+    console.groupEnd()
   }
   render() {
     let { hasError } =this.state

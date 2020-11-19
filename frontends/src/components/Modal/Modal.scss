@@ -3,12 +3,15 @@
     color: #fff;
     border-radius: 0.05rem;
     background: #015478;
-    min-width: 5rem;
     padding: 0.2rem;
-    z-index: 9999;
+    z-index: 700;
+    min-width: 5rem;
     min-height: 3rem;
+    max-width: 10rem;
+    max-height: 8rem;
     position: absolute;
     left: 1rem;
+    overflow: auto;
     top: 0.7rem;
     transition: all 0.3s;
     opacity: 0;

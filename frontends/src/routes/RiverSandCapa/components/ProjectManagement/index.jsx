@@ -4,21 +4,14 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-17 20:32:34
+ * @LastEditTime: 2020-11-18 20:25:48
  */
 import React, { Component } from 'react'
-import { Table, Button, Form, Input, Upload, message } from 'antd'
+import { Table, Button, Form, Input, Upload, Popconfirm } from 'antd'
 import Modal from '@Modal'
 import { UploadOutlined } from '@ant-design/icons'
+import { observer, inject } from 'mobx-react'
 // import reqwest from 'reqwest'
-const dataSource = [
-  {
-    key: '1',
-    name: '胡彦斌',
-    age: 32,
-    address: '西湖区湖底公园1号',
-  },
-]
 const layout = {
   labelCol: {
     span: 8,
@@ -33,59 +26,72 @@ const tailLayout = {
     span: 16,
   },
 }
-const columns = [
-  {
-    title: '序号',
-    dataIndex: 'name',
-    key: 'name',
-    render: (value, item, index) => {
-      return index + 1
-    },
-  },
-  {
-    title: '项目名称',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: '标签名称',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: '区域矢量文件',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: '操作',
-    dataIndex: 'address',
-    key: 'address',
-    render: (value, item, index) => {
-      return (
-        <>
-          <Button type="primary">编辑</Button>{' '}
-          <Button type="primary" danger>
-            删除
-          </Button>
-        </>
-      )
-    },
-  },
-]
-export default class index extends Component {
+@inject('RiverSandCapa')
+@observer
+class index extends Component {
   constructor(props) {
     super()
     this.state = {
       visible: false,
       fileList: [],
       uploading: false,
+      columns: [
+        {
+          title: '序号',
+          dataIndex: 'name',
+          key: 'name',
+          render: (value, item, index) => {
+            return index + 1
+          },
+        },
+        {
+          title: '项目名称',
+          dataIndex: 'projectName',
+          key: 'projectName',
+        },
+        {
+          title: '标签名称',
+          dataIndex: 'labelName',
+          key: 'labelName',
+        },
+        {
+          title: '区域矢量文件',
+          dataIndex: 'imageName',
+          key: 'imageName',
+        },
+        {
+          title: '操作',
+          dataIndex: 'id',
+          key: 'id',
+          render: (value, item, index) => {
+            return (
+              <>
+                <Button type="primary">编辑</Button>
+                <Popconfirm
+                  placement="right"
+                  title={'确定删除当前项目吗？'}
+                  onConfirm={this.Delete.bind(this, value)}
+                  okText="确认删除"
+                  cancelText="取消"
+                >
+                  <Button type="primary" danger>
+                    删除
+                  </Button>
+                </Popconfirm>
+              </>
+            )
+          },
+        },
+      ],
     }
   }
   createData = () => {
     this.setState({
       visible: true,
     })
+  }
+  Delete(id) {
+    this.props.RiverSandCapa.deleteListData(id)
   }
   hide = () => {
     this.setState({
@@ -133,7 +139,9 @@ export default class index extends Component {
   }
 
   render() {
-    const { visible, uploading, fileList } = this.state
+    const { RiverSandCapaData } = this.props.RiverSandCapa
+    const { visible, fileList, columns } = this.state
+    console.log(RiverSandCapaData)
     const props = {
       onRemove: (file) => {
         this.setState((state) => {
@@ -158,7 +166,7 @@ export default class index extends Component {
         <Button onClick={this.createData} type="primary">
           新建
         </Button>
-        <Table dataSource={dataSource} columns={columns} />
+        <Table dataSource={RiverSandCapaData} columns={columns} />
         <Modal onClose={this.hide} footer={null} visible={visible}>
           <Form
             {...layout}
@@ -185,7 +193,7 @@ export default class index extends Component {
             <Form.Item {...tailLayout}>
               <Button type="default">取消</Button>
               <Button type="primary" htmlType="submit">
-                保存{' '}
+                保存
               </Button>
             </Form.Item>
           </Form>
@@ -194,3 +202,5 @@ export default class index extends Component {
     )
   }
 }
+
+export default index

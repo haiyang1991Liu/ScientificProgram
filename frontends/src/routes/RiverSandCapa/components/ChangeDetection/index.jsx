@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 变化监测
- * @LastEditTime: 2020-11-17 20:39:42
+ * @LastEditTime: 2020-11-18 19:43:51
  */
 import React from 'react'
 import { Tabs } from 'antd'
@@ -13,12 +13,19 @@ import Statistics from './Statistics'
 import TrendChart from './TrendChart'
 const { TabPane } = Tabs
 export default function index() {
-    return (
-      <div className={styles.change_detection}>
-        <Tabs defaultActiveKey="1" tabPosition={'top'} style={{ height: 220 }}>
-          <TabPane tab={'统计表'} key={1}><Statistics/></TabPane>
-          <TabPane tab={'趋势图'} key={2}><TrendChart/></TabPane>
-        </Tabs>
-      </div>
-    )
+  return (
+    <div className={styles.change_detection}>
+      <Tabs
+        defaultActiveKey="1"
+        tabPosition={'top'}
+      >
+        <TabPane tab={'统计表'} key={1}>
+          <Statistics />
+        </TabPane>
+        <TabPane tab={'趋势图'} key={2}>
+          <TrendChart />
+        </TabPane>
+      </Tabs>
+    </div>
+  )
 }

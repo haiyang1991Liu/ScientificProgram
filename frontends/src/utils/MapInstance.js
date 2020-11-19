@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-17 09:08:11
+ * @LastEditTime: 2020-11-18 14:36:08
  */
 import L from 'leaflet'
 import {
@@ -26,13 +26,16 @@ class Map {
   }
   init() {
     this.changeBaseLayer(this.initBaseLayers)
+    L.control.scale().addTo(this.map)
   }
   changeBaseLayer(layers) {
     if (!layers || !layers.length || layers.length === 0) {
       // message.error('底图图层信息为空，联系管理员')
       return 
     }
-    
+    layers.forEach(item => {
+      item.addTo(this.map)
+    })
   }
 }
 
