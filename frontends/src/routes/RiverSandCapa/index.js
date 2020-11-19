@@ -4,20 +4,21 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 河道含沙界面
- * @LastEditTime: 2020-11-18 14:24:52
+ * @LastEditTime: 2020-11-19 18:47:51
  */
-
 import React, { Component } from 'react'
 import { map } from '@utils/MapInstance'
 import {
   TIANDITU_TOKEN,
   MAP_YGYX_ISERVER,
 } from '@assets/constant/LeafletConstant'
-import Options from './components'
+import Options from './components';
+import { extendLeaflet } from '@utils/leafletExtend.js'
 import L from 'leaflet'
 class RiverSandCapa extends Component {
   constructor(props) {
     super(props)
+    extendLeaflet()
     this.map = null
     this.state = {}
   }

@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-18 14:36:08
+ * @LastEditTime: 2020-11-19 17:47:36
  */
 import L from 'leaflet'
 import {
@@ -35,6 +35,7 @@ class Map {
     }
     layers.forEach(item => {
       item.addTo(this.map)
+      // console.log(this.map.getLayerId(item))
     })
   }
 }

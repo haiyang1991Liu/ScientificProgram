@@ -25,6 +25,7 @@ function Index({ RiverSandCapa }) {
     setVisible(false)
   }
   useEffect(() => {
+    RiverSandCapa.getAverageListData()
     RiverSandCapa.getListData()
   }, [RiverSandCapa])
   return (

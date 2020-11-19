@@ -4,11 +4,18 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 河道含沙界面
- * @LastEditTime: 2020-11-18 21:25:51
+ * @LastEditTime: 2020-11-19 14:17:40
  */
 import { observable, makeObservable, computed, action } from 'mobx'
-import { getList, deleteList, getAverageList } from '@api/RiverSandCapa'
+import {
+  getList,
+  deleteList,
+  getAverageList,
+  UploadShp,
+  createProject,
+} from '@api/RiverSandCapa'
 import { Format } from '@utils/DateFormat.js'
+import { message } from 'antd'
 class RiverSandCapa {
   constructor() {
     makeObservable(this)
@@ -18,14 +25,17 @@ class RiverSandCapa {
   @observable endDate = Format(new Date())
   @observable startDate = '2000-01-01'
   @action getListData() {
-    this.getAverageListData()
     getList().then((res) => {
       this.RiverSandCapaData = res.data
     })
   }
   @action deleteListData(id) {
     deleteList(id).then((res) => {
-      this.RiverSandCapaData = res.data
+      if (res.code === 200) {
+        this.getListData()
+      } else {
+        message.error(res.msg)
+      }
     })
   }
   @action getAverageListData(data) {
@@ -42,6 +52,12 @@ class RiverSandCapa {
     getAverageList({ endDate: end, startDate: start }).then((res) => {
       this.AverageListData = res.data
     })
+  }
+  @action UploadShp(data) {
+    return UploadShp(data)
+  }
+  @action CreateProject(data) {
+    return  createProject(data)
   }
 }
 const commonStore = new RiverSandCapa()

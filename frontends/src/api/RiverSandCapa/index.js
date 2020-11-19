@@ -4,15 +4,47 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 
- * @LastEditTime: 2020-11-18 18:35:31
+ * @LastEditTime: 2020-11-19 14:42:52
  */
-import { get, deletes } from '@utils/axios'
+import { get, deletes, post_formData ,post_data} from '@utils/axios'
+
+ /**
+ *  含沙量 查询项目列表
+ *
+ * @returns Promise
+ */
 export const getList = () => {
     return get('/sediment-project/list')
 }
+ /**
+ *  含沙量 删除项目
+ *
+ * @returns Promise
+ */
 export const deleteList = (id) => {
     return deletes(`/sediment-project/${id}`)
 }
+ /**
+ *  含沙量 历史平均含沙量查询
+ *
+ * @returns Promise
+ */
 export const getAverageList = (params) => {
     return get(`/sediment-average/list`, params)
+}
+ /**
+ *  含沙量 上传shp文件
+ *
+ * @returns Promise
+ */
+export const UploadShp = (data) => {
+    return post_formData(`/sediment-shp/upload/shp`, data)
+}
+ /**
+ *  含沙量 上传shp文件
+ *
+ * @returns Promise
+ */
+export const createProject = (data) => {
+    return post_data(`/sediment-project`, data)
 }
