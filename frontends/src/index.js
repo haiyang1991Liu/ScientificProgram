@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-18 21:13:08
+ * @LastEditTime: 2020-11-23 15:27:54
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -13,6 +13,7 @@ import { Provider } from 'mobx-react'
 import { configure } from 'mobx'
 import  {stores}  from '@models'
 import App from './App'
+import '@assets/icon/iconfont.css';
 import { ConfigProvider } from 'antd'
 import { BrowserRouter as Router } from 'react-router-dom'
 import zhCN from 'antd/lib/locale/zh_CN'

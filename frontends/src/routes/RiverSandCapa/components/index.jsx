@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-18 16:32:44
+ * @LastEditTime: 2020-11-23 16:46:53
  */
 import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
@@ -14,15 +14,22 @@ import DistributedComputing from './DistributedComputing'
 import ProjectManagement from './ProjectManagement'
 import { observer, inject } from 'mobx-react'
 function Index({ RiverSandCapa }) {
-  const [options] = useState(['项目管理', '分布计算', '变化监测'])
+  const [options] = useState([
+    { name: '项目管理', icon: 'iconxiangmuguanli' },
+    { name: '分布计算', icon: 'iconfenbu' },
+    { name: '变化监测', icon: 'iconshouye-feiyongqushifenxi' },
+  ])
   const [componentKey, setComponentKey] = useState()
+  const [action, setAction] = useState()
   const [visible, setVisible] = useState(false)
-  const setView = (key) => {
+  const setView = (key, index) => {
     setVisible(true)
-    setComponentKey(key)
+    setComponentKey(key.name)
+    setAction(index)
   }
   const hide = (key) => {
     setVisible(false)
+     setAction()
   }
   useEffect(() => {
     RiverSandCapa.getAverageListData()
@@ -32,12 +39,22 @@ function Index({ RiverSandCapa }) {
     <div className={styles.tooltip}>
       {options.map((item, index) => {
         return (
-          <div key={index} onClick={() => setView(item)}>
-            {item}
+          <div
+            key={index}
+            className={action === index ? styles.action:''}
+            onClick={() => setView(item, index)}
+          >
+            <div className={`iconfont ${item.icon}`}></div>
+            <div>{item.name}</div>
           </div>
         )
       })}
-      <Modal onClose={() => hide()} footer={null} visible={visible}>
+      <Modal
+        title={componentKey}
+        onClose={() => hide()}
+        footer={null}
+        visible={visible}
+      >
         <>
           {componentKey === '项目管理' && <ProjectManagement />}
           {componentKey === '分布计算' && <DistributedComputing />}

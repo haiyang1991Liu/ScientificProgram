@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-18 20:59:49
+ * @LastEditTime: 2020-11-23 16:03:20
  */
 //s数据看板柱状图
 /**
@@ -17,12 +17,12 @@ import echarts from 'echarts'
 export function getBarChart(data) {
   const colorList = ['#9E87FF', '#73DDFF', '#fe9a8b', '#F56948', '#9E87FF']
   const option = {
-    backgroundColor: '#fff',
     title: {
       text: '上海南槽航道表层含沙量演变趋势分析',
       textStyle: {
         fontSize: 12,
         fontWeight: 400,
+        color: '#FFF',
       },
       left: 'center',
       top: '5%',
@@ -34,7 +34,7 @@ export function getBarChart(data) {
       itemWidth: 6,
       itemGap: 20,
       textStyle: {
-        color: '#556677',
+        color: '#FFF',
       },
     },
     tooltip: {
@@ -78,7 +78,7 @@ export function getBarChart(data) {
           interval: 0,
           rotate: 45,
           textStyle: {
-            color: '#556677',
+            color: '#FFF',
           },
           // 默认x轴字体大小
           fontSize: 12,
@@ -148,10 +148,10 @@ export function getBarChart(data) {
     yAxis: [
       {
         name: '表层含沙量浓度(kg/m³)',
-        nameTextStyle: { color: 'black', align: 'center' },
+        nameTextStyle: { color: '#FFF', align: 'center' },
         nameLocation: 'middle',
         type: 'value',
-        nameGap:'45',
+        nameGap: '45',
         axisTick: {
           show: false,
         },
@@ -163,7 +163,7 @@ export function getBarChart(data) {
         },
         axisLabel: {
           textStyle: {
-            color: '#556677',
+            color: '#FFF',
           },
         },
         splitLine: {

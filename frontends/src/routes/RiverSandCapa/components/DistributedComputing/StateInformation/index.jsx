@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 
- * @LastEditTime: 2020-11-20 17:12:35
+ * @LastEditTime: 2020-11-23 16:47:25
  */
 import React from 'react'
 import {Button,Col,Row,Progress} from 'antd'
@@ -27,7 +27,7 @@ export default function index({data}) {
             <Progress percent={0} />
           </Col>
           <Col span={24}>
-            <Button color>未开始</Button>
+            <Button >未开始</Button>
             <Button>进行中</Button>
             <Button>完成</Button>
           </Col>

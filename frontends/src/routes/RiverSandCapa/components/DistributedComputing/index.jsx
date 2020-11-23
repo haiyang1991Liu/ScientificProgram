@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 分布计算
- * @LastEditTime: 2020-11-20 15:23:58
+ * @LastEditTime: 2020-11-23 16:47:56
  */
 import React, { useState } from 'react'
 import { Row, Col, Steps, Select } from 'antd'
@@ -34,10 +34,10 @@ function Index({ RiverSandCapa }) {
             defaultValue="0"
             style={{ width: 250 }}
           >
-            <Option value={'0'}>请选择</Option>
+            <Option key={'0'} value={'0'}>请选择</Option>
             {RiverSandCapaData.map((item) => {
               return (
-                <Option data={item} value={item.id}>
+                <Option data={item} key={item.id} value={item.id}>
                   {item.projectName}
                 </Option>
               )

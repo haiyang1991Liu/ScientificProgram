@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-20 18:11:25
+ * @LastEditTime: 2020-11-23 17:26:38
  */
 import React, { Component } from 'react'
 import {
@@ -52,6 +52,7 @@ class index extends Component {
           title: '序号',
           dataIndex: 'name',
           key: 'name',
+          align: 'center',
           render: (value, item, index) => {
             return index + 1
           },
@@ -60,25 +61,29 @@ class index extends Component {
           title: '项目名称',
           dataIndex: 'projectName',
           key: 'projectName',
+          align: 'center',
         },
         {
           title: '标签名称',
           dataIndex: 'labelName',
           key: 'labelName',
+          align: 'center',
         },
         {
           title: '区域矢量文件',
           dataIndex: 'shpName',
           key: 'shpName',
+          align: 'center',
         },
         {
           title: '操作',
           dataIndex: 'id',
+          align: 'center',
           key: 'id',
           render: (value, item, index) => {
             return (
               <>
-                <Button onClick={this.updata.bind(this, item)} type="primary">
+                <Button onClick={this.updata.bind(this, item)} style={{marginRight:'.1rem'}} type="primary">
                   编辑
                 </Button>
                 <Popconfirm
@@ -264,7 +269,7 @@ class index extends Component {
   }
   render() {
     const { RiverSandCapaData, tableLoading } = this.props.RiverSandCapa
-    const { visible, fileList, columns, uploading } = this.state
+    const { visible, fileList, columns, uploading, isUpdata } = this.state
     const props = {
       multiple: true,
       onRemove: (file) => {
@@ -299,10 +304,18 @@ class index extends Component {
               }, // 点击行
             }
           }}
+          scroll={{ x: '8rem' }}
+          rowKey={(record) => record.id}
           dataSource={RiverSandCapaData}
           columns={columns}
         />
-        <Modal onClose={this.hide} footer={null} visible={visible}>
+        <Modal
+          onClose={this.hide}
+          title={isUpdata ? '更改项目' : '新建项目'}
+          footer={null}
+          visible={visible}
+          create
+        >
           <Form
             {...layout}
             name="basic"
