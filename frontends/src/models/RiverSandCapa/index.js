@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 河道含沙界面
- * @LastEditTime: 2020-11-19 14:17:40
+ * @LastEditTime: 2020-11-20 12:25:12
  */
 import { observable, makeObservable, computed, action } from 'mobx'
 import {
@@ -13,6 +13,8 @@ import {
   getAverageList,
   UploadShp,
   createProject,
+  getProjectParticulars,
+  UpdataProject,
 } from '@api/RiverSandCapa'
 import { Format } from '@utils/DateFormat.js'
 import { message } from 'antd'
@@ -20,23 +22,33 @@ class RiverSandCapa {
   constructor() {
     makeObservable(this)
   }
+  @observable Map = null
   @observable RiverSandCapaData = []
   @observable AverageListData = []
   @observable endDate = Format(new Date())
   @observable startDate = '2000-01-01'
+  @observable tableLoading = false
   @action getListData() {
+    this.tableLoading = true
     getList().then((res) => {
-      this.RiverSandCapaData = res.data
+      if (res.code === 200) {
+        this.tableLoading = false
+        this.RiverSandCapaData = res.data
+      }
     })
   }
   @action deleteListData(id) {
     deleteList(id).then((res) => {
       if (res.code === 200) {
         this.getListData()
+        message.error('删除成功')
       } else {
         message.error(res.msg)
       }
     })
+  }
+  @action initMap(map) {
+    this.map = map
   }
   @action getAverageListData(data) {
     const { endDate, startDate } = this
@@ -57,7 +69,20 @@ class RiverSandCapa {
     return UploadShp(data)
   }
   @action CreateProject(data) {
-    return  createProject(data)
+    return createProject(data)
+  }
+  @action UpdataProject(data) {
+    return UpdataProject(data)
+  }
+  /**
+   * 获取项目详情
+   *
+   * @param {*} id
+   * @returns
+   * @memberof RiverSandCapa
+   */
+  @action getProjectParticulars(id) {
+    return getProjectParticulars(id)
   }
 }
 const commonStore = new RiverSandCapa()

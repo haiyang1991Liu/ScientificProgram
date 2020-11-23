@@ -6,7 +6,7 @@
  * @Description: 
  * @LastEditTime: 2020-11-19 14:42:52
  */
-import { get, deletes, post_formData ,post_data} from '@utils/axios'
+import { get, deletes, post_formData, post_data, put } from '@utils/axios'
 
  /**
  *  含沙量 查询项目列表
@@ -41,10 +41,26 @@ export const UploadShp = (data) => {
     return post_formData(`/sediment-shp/upload/shp`, data)
 }
  /**
- *  含沙量 上传shp文件
+ *  含沙量 新建项目
  *
  * @returns Promise
  */
 export const createProject = (data) => {
     return post_data(`/sediment-project`, data)
+}
+ /**
+ *  含沙量 更新项目
+ * 
+ * @returns Promise
+ */
+export const UpdataProject = (data) => {
+    return put(`/sediment-project`, data)
+}
+ /**
+ *  含沙量 查询单个项目详情
+ *
+ * @returns Promise
+ */
+export const getProjectParticulars = (id) => {
+  return get(`/sediment-project/${id}`)
 }

@@ -1,41 +1,68 @@
 .header {
-    height: 0.5rem;
-    transition: all 0.3s;
+  height: 0.67rem;
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3rem;
+  .navigation-bar {
+    display: flex;
+    justify-content: center;
+    height: 100%;
     position: relative;
-    .navigation-bar {
-      display: flex;
-      justify-content: center;
-      height: 100%;
-      & > :nth-of-type(2) {
-        margin-right: 6rem;
-      }
-      .item {
-        transition: all 0.3s;
-        color: white;
-        font-size: 0.2rem;
-        line-height: 0.5rem;
-        width: 2rem;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-      }
-      .item:hover {
-        color: blue !important;
-      }
-    }
-    .header_title {
-      text-shadow: 0px 0px 5px #1d3859;
-      font-size: 0.3rem;
-      color: #69b8e3;
-      position: absolute;
-      width: 5rem;
-      top: 50%;
-      font-weight: 900;
+    .item {
+      background: url('~@assets/images/Menu.png') no-repeat;
+      background-position: 0rem 0.03rem;
+      background-size: 2.4rem;
+      transition: all 0.3s;
+      color: white;
+      font-size: 0.2rem;
+      line-height: 0.67rem;
+      width: 2.4rem;
+      font-weight: 400;
       text-align: center;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      &>img{
-          width: .5rem;
-      }
+      text-decoration: none;
+    }
+    .item:hover {
+      color: #00FFFF;
     }
   }
+  .navigation-bar::after {
+    content: '';
+    background: url('~@assets/images/HeaderAfter.png') no-repeat;
+    width: 0.3rem;
+    background-size: 0.28rem;
+    height: 0.3rem;
+    position: absolute;
+    top: 0.03rem;
+    left: -0.13rem;
+    z-index: 1;
+  }
+  .navigation-bar::before {
+    content: '';
+    background: url('~@assets/images/HeaderBefore.png') no-repeat;
+    width: 0.3rem;
+    background-size: 0.28rem;
+    height: 0.3rem;
+    position: absolute;
+    bottom: 0.03rem;
+    right: -0.28rem;
+    z-index: 1;
+  }
+  .header_title {
+    display: flex;
+    align-items: center;
+    padding: 0 0.1rem;
+    font-size: 0.3rem;
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    & > img {
+      width: 0.53rem;
+      height: 0.53rem;
+    }
+    & > div {
+      height: 0.53rem;
+    }
+  }
+}

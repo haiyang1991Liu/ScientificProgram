@@ -15,6 +15,9 @@ import {
 import Options from './components';
 import { extendLeaflet } from '@utils/leafletExtend.js'
 import L from 'leaflet'
+import { inject, observer } from 'mobx-react';
+@inject('RiverSandCapa')
+@observer
 class RiverSandCapa extends Component {
   constructor(props) {
     super(props)
@@ -29,6 +32,7 @@ class RiverSandCapa extends Component {
         L.supermap.tiledMapLayer(MAP_YGYX_ISERVER),
       ],
     })
+    this.props.RiverSandCapa.initMap(this.map)
   }
 
   render() {

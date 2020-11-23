@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 
- * @LastEditTime: 2020-11-16 15:46:38
+ * @LastEditTime: 2020-11-20 10:22:33
  */
 import L from 'leaflet';
 
@@ -21,22 +21,9 @@ export const MAP_YGYX_ISERVER =
 // 各featureGroup的key值
 export const MAP_FEATUREGROUP = {
   INITIAL_FEATUREGROUP: {
-    CODE: "initial_featureGroup",
-    Z_INDEX: 0
+    CODE: 'initial_featureGroup',
   },
-  SOURCE_TREE_FEATUREGROUP: {
-    CODE: "source_tree_featureGroup"
+  PROJECT_FEATUREGROUP: {
+    CODE: 'project_featureGroup',
   },
-  BASE_LAYER_FEATUREGROUP: {
-    CODE: "base_layer_featureGroup"
-  },
-  SEARCH_FEATUREGROUP: {
-    CODE: "search_layer_featureGroup"
-  },
-  CLICK_MAP_FEATUREGROUP: {
-    CODE: "click_map_featureGroup"
-  },
-  URGENT_VECLAYER_FEATUREGROUP:{
-    CODE: "urgent_veclayer_featureGroup"
-  }
-};
+}

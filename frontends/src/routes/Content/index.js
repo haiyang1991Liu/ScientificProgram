@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:   登陆界面
- * @LastEditTime: 2020-11-18 14:20:42
+ * @LastEditTime: 2020-11-23 10:34:37
  */
 import React, { Component } from 'react'
 import Header from '@routes/Header'
@@ -54,7 +54,7 @@ class index extends Component {
             />
             <Redirect from="/" to="/RiverSandCapa" />
           </div>
-        <Footer LocalTime={currentYear} />
+        {/* <Footer LocalTime={currentYear} /> */}
       </>
     )
   }

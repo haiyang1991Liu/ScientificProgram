@@ -8,7 +8,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  background-image: url('~@assets/images/background.jpg');
+  background: #131d38;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   #oeperation-panel {
@@ -18,6 +18,7 @@
   }
 }
 .active {
-  color: blue !important;
-  text-shadow: 0 0 10px #fff;
+  background: url('~@assets/images/MenuMove.png') no-repeat !important;
+  background-position: 0rem 0.03rem !important;
+  background-size: 2.4rem !important;
 }
