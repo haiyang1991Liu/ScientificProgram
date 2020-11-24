@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-24 10:47:47
+ * @LastEditTime: 2020-11-24 18:45:04
  */
 import React, { Component } from 'react'
 import {
@@ -30,13 +30,13 @@ const layout = {
 }
 const ItemLayout = {
   wrapperCol: {
-    span: 14,
+    span: 13,
   },
 }
 const tailLayout = {
   wrapperCol: {
     offset: 6,
-    span: 14,
+    span: 13,
   },
 }
 @inject('RiverSandCapa')
@@ -311,6 +311,11 @@ class index extends Component {
                 this.onShowMap(record)
               }, // 点击行
             }
+          }}
+          pagination={{
+            size: 'small',
+            position: ['bottomCenter'],
+            showSizeChanger: false,
           }}
           scroll={{ x: '8rem' }}
           rowKey={(record) => record.id}

@@ -41,18 +41,47 @@
   border-color: #4efffd;
   color: #000000;
 }
+.ant-btn-primary:focus {
+  border-radius: 5px;
+  background: #4efffd;
+  border-color: #4efffd;
+  color: #000000;
+}
 .ant-btn-dangerous {
   border-radius: 5px;
-  background: transparent !important;
-  border-color: #59dbe7 !important;
-  color: #FFFFFF !important;
+  background: transparent ;
+  border-color: #59dbe7 ;
+  color: #ffffff ;
 }
 .ant-btn-dangerous:hover {
   border-radius: 5px;
-  background: transparent !important;
-  border-color: #4efffd !important;
-  color:#4efffd !important;
+  background: transparent ;
+  border-color: #4efffd ;
+  color: #4efffd ;
+}
+.ant-btn-dangerous:focus {
+  border-radius: 5px;
+  background: transparent ;
+  border-color: #4efffd ;
+  color: #4efffd ;
 }
 .leaflet-control-container {
   display: none;
+}
+.ant-pagination-item-active a {
+  color: #1890ff !important;
+}
+.ant-pagination-item a {
+  color: #ffffff;
+}
+.ant-pagination-next > button,
+.ant-pagination-prev > button {
+  color: #ffffff;
+}
+.ant-pagination-disabled > button,
+.ant-pagination-prev > button {
+  color: #ffffff;
+}
+.ant-progress-text{
+  color:#00FFFF;
 }

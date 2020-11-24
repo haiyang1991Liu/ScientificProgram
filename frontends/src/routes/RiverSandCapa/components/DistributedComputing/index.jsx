@@ -4,9 +4,9 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 分布计算
- * @LastEditTime: 2020-11-24 16:54:07
+ * @LastEditTime: 2020-11-24 20:03:16
  */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Select, Progress } from 'antd'
 import StateInformation from './StateInformation'
 import SetupModel from './SetupModel'
@@ -17,6 +17,8 @@ const { Option } = Select
 function Index({ RiverSandCapa }) {
   const { RiverSandCapaData } = RiverSandCapa
   const [data, setData] = useState({})
+  const [percent, setPercent] = useState(0)
+  const [time, setTime] = useState(null)
   const [Steps] = useState([
     { name: '影像裁剪', key: 1 },
     { name: '模型设置', key: 2 },
@@ -32,8 +34,31 @@ function Index({ RiverSandCapa }) {
       setData(Object.assign({ ...item, ...res.data }))
     })
   }
-  const changeStep = ({key}) => {
+  useEffect(() => {
+    return () => {
+      if (time) {
+        clearInterval(time)
+      }
+    }
+  }, [time])
+  const changeStep = ({ key }) => {
     setStep(key)
+  }
+  const StartCounting = () => {
+    let num = percent
+    const times = setInterval(() => {
+      num += Math.random()
+      setPercent(num)
+      if (num > 40) {
+        clearInterval(times)
+      }
+    }, 100);
+    setTime(times)
+  }
+  const Suspended = () => {
+    if (time) {
+       clearInterval(time)
+    }
   }
   return (
     <div className={styles.distributed_content}>
@@ -71,11 +96,33 @@ function Index({ RiverSandCapa }) {
           })}
         </div>
         <div>
-          {Step === 1 && <StateInformation data={data} />}
-          {Step === 2 && <SetupModel data={data} />}
-          {Step === 3 && <Calculate data={data} />}
+          {Step === 1 && (
+            <StateInformation
+              StartCounting={StartCounting}
+              Suspended={Suspended}
+              percent={percent}
+              data={data}
+            />
+          )}
+          {Step === 2 && (
+            <SetupModel StartCounting={StartCounting} data={data} />
+          )}
+          {Step === 3 && (
+            <Calculate StartCounting={StartCounting} data={data} />
+          )}
           <div>
-            <Progress percent={0} />
+            <Progress
+              trailColor={'#216665'}
+              strokeLinecap="round"
+              strokeWidth={20}
+              status="active"
+              style={{ marginBottom: '.2rem' }}
+              percent={percent}
+              strokeColor={{
+                from: '#00FFFF',
+                to: '#00FFFF',
+              }}
+            />
           </div>
           <div className={styles.image_cropping_legend}>
             <div>未开始</div>

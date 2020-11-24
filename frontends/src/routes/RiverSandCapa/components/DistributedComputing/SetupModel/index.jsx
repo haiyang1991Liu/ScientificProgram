@@ -4,10 +4,10 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-24 17:06:20
+ * @LastEditTime: 2020-11-24 19:23:59
  */
 import React from 'react'
-import { Button, Progress, Input } from 'antd'
+import { Button, Input } from 'antd'
 import styles from './index.module.scss'
 export default function index() {
   return (

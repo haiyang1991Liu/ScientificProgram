@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 统计表
- * @LastEditTime: 2020-11-24 17:46:37
+ * @LastEditTime: 2020-11-24 18:48:29
  */
 import React, { useState } from 'react'
 import { Button, Table, DatePicker } from 'antd'
@@ -71,6 +71,11 @@ function Index({ RiverSandCapa }) {
         dataSource={AverageListData}
         rowKey={(record) => record.id}
         columns={columns}
+        pagination={{
+          size: 'small',
+          position: ['bottomCenter'],
+          showSizeChanger:false,
+        }}
         rowClassName={'table-td-color'}
       />
       <Modal
