@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-23 17:26:38
+ * @LastEditTime: 2020-11-24 10:47:47
  */
 import React, { Component } from 'react'
 import {
@@ -14,25 +14,29 @@ import {
   Input,
   Upload,
   Popconfirm,
-  Tooltip,
   message,
+  Tooltip,
 } from 'antd'
 import Modal from '@Modal'
-import { UploadOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import { observer, inject } from 'mobx-react'
 import './index.scss'
 const layout = {
   labelCol: {
-    span: 8,
+    span: 6,
   },
   wrapperCol: {
-    span: 16,
+    span: 18,
+  },
+}
+const ItemLayout = {
+  wrapperCol: {
+    span: 14,
   },
 }
 const tailLayout = {
   wrapperCol: {
-    offset: 8,
-    span: 16,
+    offset: 6,
+    span: 14,
   },
 }
 @inject('RiverSandCapa')
@@ -83,7 +87,11 @@ class index extends Component {
           render: (value, item, index) => {
             return (
               <>
-                <Button onClick={this.updata.bind(this, item)} style={{marginRight:'.1rem'}} type="primary">
+                <Button
+                  onClick={this.updata.bind(this, item)}
+                  style={{ marginRight: '.1rem' }}
+                  type="primary"
+                >
                   编辑
                 </Button>
                 <Popconfirm
@@ -204,7 +212,7 @@ class index extends Component {
           this.setState({
             uploading: false,
           })
-          message.error(err)
+          message.error(err.message)
         })
     }
   }
@@ -218,7 +226,7 @@ class index extends Component {
     message.error('新建项目失败请重新调整格式重新上传')
   }
   handleUpload = () => {
-    const { fileList, isUpdata, projectId } = this.state
+    const { fileList } = this.state
     const formData = new FormData()
     fileList.forEach((file) => {
       formData.append('file', file)
@@ -288,7 +296,7 @@ class index extends Component {
         }))
         return false
       },
-      fileList,
+      fileList: [],
     }
     return (
       <div>
@@ -339,35 +347,54 @@ class index extends Component {
             <Form.Item
               label="项目名称"
               name="projectName"
+              {...ItemLayout}
               rules={[{ required: true, message: '项目名称不能为空' }]}
             >
               <Input />
             </Form.Item>
-            <Form.Item label="区域矢量文件">
-              <span className="project_help">第一步、</span>
+            <Form.Item required={true} label="区域矢量文件">
+              <Tooltip
+                title={
+                  fileList.length
+                    ? fileList.map((item) => item.name)
+                    : '.shp、.shx'
+                }
+              >
+                <Input
+                  value={
+                    fileList.length ? fileList.map((item) => item.name) : ''
+                  }
+                  placeholder=".shp、.shx"
+                  readOnly="readOnly"
+                />
+              </Tooltip>
               <Upload {...props}>
-                <Button icon={<UploadOutlined />}>选择上传文件</Button>
-                <Tooltip title={'至少上传两个名为.shp、.shx后缀的文件'}>
-                  <QuestionCircleOutlined className={'keyWords_icon'} />
-                </Tooltip>
+                <Button style={{ marginLeft: '.1rem' }} type="primary">
+                  浏览
+                </Button>
               </Upload>
-              <span className="project_help">第二部、</span>
               <Button
                 type="primary"
                 onClick={this.handleUpload}
-                icon={<UploadOutlined />}
                 loading={uploading}
+                style={{ marginLeft: '.1rem' }}
                 disabled={fileList.length <= 1}
               >
-                {uploading ? '正在上传' : '提交上传文件'}
+                {uploading ? '正在上传' : '上传'}
               </Button>
             </Form.Item>
 
-            <Form.Item label="标签名称" name="labelName">
+            <Form.Item {...ItemLayout} label="标签名称" name="labelName">
               <Input />
             </Form.Item>
             <Form.Item {...tailLayout}>
-              <Button loading={uploading} onClick={this.Cancel} type="default">
+              <Button
+                loading={uploading}
+                onClick={this.Cancel}
+                type="default"
+                danger
+                style={{ float: 'right' }}
+              >
                 取消
               </Button>
               <Button loading={uploading} type="primary" htmlType="submit">

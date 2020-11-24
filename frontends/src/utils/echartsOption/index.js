@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-23 16:03:20
+ * @LastEditTime: 2020-11-24 17:37:48
  */
 //s数据看板柱状图
 /**
@@ -65,7 +65,7 @@ export function getBarChart(data) {
     xAxis: [
       {
         type: 'category',
-        data: data && data.map((item) => item.date.join('-')),
+        data: data && data.map((item) => item.date),
         axisLine: {
           lineStyle: {
             color: '#DCE2E8',

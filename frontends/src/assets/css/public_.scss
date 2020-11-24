@@ -32,8 +32,27 @@
   border-color: #59dbe7;
   color: #000000;
 }
+.ant-btn {
+  min-width: 0.88rem;
+}
+.ant-btn-primary:hover {
+  border-radius: 5px;
+  background: #4efffd;
+  border-color: #4efffd;
+  color: #000000;
+}
 .ant-btn-dangerous {
   border-radius: 5px;
   background: transparent !important;
   border-color: #59dbe7 !important;
+  color: #FFFFFF !important;
+}
+.ant-btn-dangerous:hover {
+  border-radius: 5px;
+  background: transparent !important;
+  border-color: #4efffd !important;
+  color:#4efffd !important;
+}
+.leaflet-control-container {
+  display: none;
 }

@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:  公用Modal弹框组件
- * @LastEditTime: 2020-11-23 18:12:01
+ * @LastEditTime: 2020-11-24 10:43:50
  */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -29,7 +29,6 @@ export default class Modal extends Component {
   //组件即将卸载时候删除dom节点
   componentWillUnmount() {
     this.node && this.node.remove()
-    console.log(this)
   }
   onHide() {
     this.setState({

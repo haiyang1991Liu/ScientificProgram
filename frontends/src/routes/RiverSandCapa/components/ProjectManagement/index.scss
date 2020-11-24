@@ -15,4 +15,11 @@
   .ant-upload-list-item-name{
       color: green;
   }
+  .ant-form-item-control-input-content{
+        display: flex;
+        justify-content: space-between;
+        &>span>div>.ant-upload{
+          display: flex;
+        }
+  }
 }
