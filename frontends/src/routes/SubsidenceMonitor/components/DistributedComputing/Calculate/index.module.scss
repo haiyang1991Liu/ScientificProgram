@@ -1,0 +1,19 @@
+.calculate {
+  margin-top: 0.3rem;
+    min-height: 2.5rem;
+  & > div {
+    width: 5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.16rem;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    & > :global(.ant-btn) {
+      float: right;
+      margin-right: 0.5rem;
+    }
+  }
+  .calculate_operation {
+    display: flex;
+    justify-content: space-between;
+  }
+}

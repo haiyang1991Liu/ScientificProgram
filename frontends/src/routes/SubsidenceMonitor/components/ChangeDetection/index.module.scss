@@ -1,0 +1,26 @@
+.change_detection {
+  & :global(.ant-tabs-tab) {
+    border: 0.01rem solid #25BEB4 !important;
+    border-bottom-color: #25BEB4 !important;
+    min-width: 1rem;
+    padding: 0.04rem 0.16rem !important;
+    margin-right: 0 !important;
+    & :global(.ant-tabs-tab-btn) {
+      color: #25BEB4 !important;
+      margin: 0 auto;
+    }
+  }
+  & :global(.ant-tabs-tab-active) {
+    color: #000000 !important;
+    background: #25BEB4 !important;
+    & :global(.ant-tabs-tab-btn) {
+      color: #000000 !important;
+    }
+  }
+  & :global(.ant-tabs-ink-bar-animated) {
+    background: #25BEB4 !important;
+  }
+  & :global(.ant-tabs-nav::before) {
+    border-bottom:none !important
+  }
+}
