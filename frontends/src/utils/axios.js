@@ -4,10 +4,10 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:   ajax请求工具类
- * @LastEditTime: 2020-11-19 15:01:18
+ * @LastEditTime: 2020-11-26 10:45:49
  */
 import axios from 'axios'
-import { isAuthenticated, logout } from './Session'
+import { logout } from './Session'
 import { Modal, message } from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import { HashRouter } from 'react-router-dom'

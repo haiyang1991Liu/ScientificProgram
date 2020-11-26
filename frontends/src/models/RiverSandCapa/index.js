@@ -6,7 +6,7 @@
  * @Description: 河道含沙界面
  * @LastEditTime: 2020-11-20 12:25:12
  */
-import { observable, makeObservable, computed, action } from 'mobx'
+import { observable, makeObservable, action } from 'mobx'
 import {
   getList,
   deleteList,

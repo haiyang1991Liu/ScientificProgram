@@ -8,7 +8,6 @@
  */
 import React, { Component } from 'react'
 import Header from '@routes/Header'
-import Footer from '@routes/Footer'
 import RiverSandCapa from '@routes/RiverSandCapa'
 import ContructionProgress from '@routes/ContructionProgress'
 import BadGeoloyMonitor from '@routes/BadGeoloyMonitor'
@@ -30,7 +29,6 @@ class index extends Component {
     return currentYear
   }
   render() {
-    const currentYear = this.getLocalTime()
 
     return (
       <>
@@ -54,7 +52,6 @@ class index extends Component {
             />
             <Redirect from="/" to="/RiverSandCapa" />
           </div>
-        {/* <Footer LocalTime={currentYear} /> */}
       </>
     )
   }

@@ -24,27 +24,29 @@
         line-height: 1;
         padding: 0 0.08rem;
         position: relative;
-        background: #00ffff;
+        background: #bfbfbf;
         margin-bottom: 0.66rem;
         margin-top: 0.24rem;
         cursor: pointer;
       }
-      .distributed_step:nth-of-type(even)::after {
+      .distributed_step:last-child:after {
         width: 0.15rem;
-        height: 1rem;
+        height: 0.55rem;
         content: '';
-        background: url('~@assets/images/step.png') no-repeat;
+        background: url('~@assets/images/step.png');
+        background-repeat: repeat-y;
         position: absolute;
-        top: 0.58rem;
+        bottom: 0.55rem;
         left: 0.17rem;
       }
       .distributed_step:nth-of-type(even)::before {
         content: '';
         width: 0.15rem;
-        height: 1rem;
-        background: url('~@assets/images/step.png') no-repeat;
+        height: 0.55rem;
+        background: url('~@assets/images/step.png');
+        background-repeat: repeat-y;
         position: absolute;
-        bottom: 0.1rem;
+        bottom: 0.55rem;
         right: 0.17rem;
       }
     }
@@ -77,4 +79,24 @@
       }
     }
   }
+}
+@keyframes steps {
+  from {
+    background-position-y: 0rem;
+  }
+  to {
+    background-position-y: 0.49rem;
+  }
+}
+.accomplish:last-child::after {
+  animation: steps 1s infinite linear;
+}
+.accomplish:nth-of-type(even)::before {
+  animation: steps 1s infinite linear;
+}
+.Doing{
+  background:#f7e88e !important;
+}
+.Done{
+  background:#00ffff !important;
 }

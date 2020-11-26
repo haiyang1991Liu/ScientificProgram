@@ -4,12 +4,12 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-24 16:54:44
+ * @LastEditTime: 2020-11-25 11:06:16
  */
 import React from 'react'
-import { Button, Progress, Input } from 'antd'
+import { Button} from 'antd'
 import styles from './index.module.scss'
-export default function index() {
+export default function index({ visible }) {
   return (
     <div className={styles.calculate}>
       <div>
@@ -17,7 +17,9 @@ export default function index() {
         （如果计算完成，则提示计算完成
       </div>
       <div className={styles.calculate_operation}>
-        <Button type='primary'>结果查看</Button>
+        <Button disabled={visible} type="primary">
+          结果查看
+        </Button>
       </div>
     </div>
   )

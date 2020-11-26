@@ -4,23 +4,22 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-24 19:59:50
+ * @LastEditTime: 2020-11-26 11:07:21
  */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Upload, message } from 'antd'
 import styles from './index.module.scss'
 import { inject, observer } from 'mobx-react'
-function Index({ RiverSandCapa, data, percent, StartCounting, Suspended }) {
+function Index({
+  RiverSandCapa,
+  data,
+  percent,
+  StartCounting,
+  Suspended,
+  visible,
+}) {
   const [fileList, setFileList] = useState([])
   const [uploading, setUploading] = useState(false)
-  const [visible, setVisible] = useState(true)
-  useEffect(() => {
-    if (data.id) {
-      setVisible(false)
-    } else {
-      setVisible(true)
-    }
-  }, [data])
   const handleUpload = () => {
     const formData = new FormData()
     fileList.forEach((file) => {
@@ -70,7 +69,7 @@ function Index({ RiverSandCapa, data, percent, StartCounting, Suspended }) {
             style={{ marginLeft: '.1rem' }}
             type="primary"
           >
-            浏览
+            浏览...
           </Button>
         </Upload>
         <Button
@@ -80,7 +79,7 @@ function Index({ RiverSandCapa, data, percent, StartCounting, Suspended }) {
           style={{ marginLeft: '.1rem' }}
           disabled={fileList.length <= 1}
         >
-          {uploading ? '正在上传' : '上传'}
+          {uploading ? '正在上传' : '重新上传'}
         </Button>
       </div>
       <div>结果文件：</div>
@@ -89,8 +88,8 @@ function Index({ RiverSandCapa, data, percent, StartCounting, Suspended }) {
           暂停
         </Button>
         <Button
-          disabled={visible}
-          onClick={() => StartCounting()}
+          // disabled={visible}
+          onClick={() => StartCounting(1)}
           type="primary"
         >
           开始
