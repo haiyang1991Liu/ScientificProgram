@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-26 10:52:51
+ * @LastEditTime: 2020-11-27 15:12:27
  */
 import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
@@ -13,7 +13,7 @@ import ChangeDetection from './ChangeDetection'
 import DistributedComputing from './DistributedComputing'
 import ProjectManagement from './ProjectManagement'
 import { observer, inject } from 'mobx-react'
-function Index({ RiverSandCapa }) {
+function Index({ RiverSandCapa, SubsidenceMonitor }) {
   const [options] = useState([
     { name: '项目管理', icon: 'iconxiangmuguanli' },
     { name: '沉降监测', icon: 'iconzu9092' },
@@ -29,19 +29,19 @@ function Index({ RiverSandCapa }) {
   }
   const hide = (key) => {
     setVisible(false)
-     setAction()
+    setAction()
   }
   useEffect(() => {
     RiverSandCapa.getAverageListData()
-    RiverSandCapa.getListData()
-  }, [RiverSandCapa])
+    SubsidenceMonitor.getSubsidenceListData()
+  }, [RiverSandCapa, SubsidenceMonitor])
   return (
     <div className={styles.tooltip}>
       {options.map((item, index) => {
         return (
           <div
             key={index}
-            className={action === index ? styles.action:''}
+            className={action === index ? styles.action : ''}
             onClick={() => setView(item, index)}
           >
             <div className={`iconfont ${item.icon}`}></div>
@@ -57,12 +57,12 @@ function Index({ RiverSandCapa }) {
       >
         <>
           {componentKey === '项目管理' && <ProjectManagement />}
-          {componentKey === '分布计算' && <DistributedComputing />}
-          {componentKey === '变化监测' && <ChangeDetection />}
+          {componentKey === '沉降监测' && <DistributedComputing />}
+          {componentKey === '隐患排查' && <ChangeDetection />}
         </>
       </Modal>
     </div>
   )
 }
 
-export default inject('RiverSandCapa')(observer(Index))
+export default inject('RiverSandCapa', 'SubsidenceMonitor')(observer(Index))

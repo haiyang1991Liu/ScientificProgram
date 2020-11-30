@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-26 11:07:41
+ * @LastEditTime: 2020-11-27 17:05:27
  */
 import React, { Component } from 'react'
 import {
@@ -41,7 +41,7 @@ const tailLayout = {
     span: 13,
   },
 }
-@inject('RiverSandCapa')
+@inject('RiverSandCapa','SubsidenceMonitor')
 @observer
 class index extends Component {
   constructor(props) {
@@ -135,7 +135,7 @@ class index extends Component {
       isUpdata: true,
       projectId: item.id,
     })
-    this.props.RiverSandCapa.getProjectParticulars(item.id).then((res) => {
+    this.props.SubsidenceMonitor.updataSubsidenceList(item.id).then((res) => {
       if (res.code === 200) {
         const { sedimentShp } = res.data
         setTimeout(() => {
@@ -258,20 +258,20 @@ class index extends Component {
    * @memberof index
    */
   onShowMap = (data) => {
-    const { id } = data
-    this.props.RiverSandCapa.getProjectParticulars(id).then((res) => {
-      if (res.code === 200) {
-        const { sedimentShp } = res.data
-        this.props.RiverSandCapa.map._addProjectLayersToFeatureGroup({
-          url: sedimentShp && sedimentShp.shpServerUrl,
-        })
-      } else {
-        message.error('数据获取失败请重新检查并操作')
-      }
-    })
+    // const { id } = data
+    // this.props.RiverSandCapa.getProjectParticulars(id).then((res) => {
+    //   if (res.code === 200) {
+    //     const { sedimentShp } = res.data
+    //     this.props.RiverSandCapa.map._addProjectLayersToFeatureGroup({
+    //       url: sedimentShp && sedimentShp.shpServerUrl,
+    //     })
+    //   } else {
+    //     message.error('数据获取失败请重新检查并操作')
+    //   }
+    // })
   }
   render() {
-    const { RiverSandCapaData, tableLoading } = this.props.RiverSandCapa
+    const { SubsidenceMonitorData, tableLoading } = this.props.SubsidenceMonitor
     const { visible, fileList, columns, uploading, isUpdata } = this.state
     const props = {
       multiple: true,
@@ -314,7 +314,7 @@ class index extends Component {
           }}
           scroll={{ x: '8rem' }}
           rowKey={(record) => record.id}
-          dataSource={RiverSandCapaData}
+          dataSource={SubsidenceMonitorData}
           columns={columns}
         />
         <Modal
