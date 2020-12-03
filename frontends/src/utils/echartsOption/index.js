@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-24 17:37:48
+ * @LastEditTime: 2020-11-30 15:21:09
  */
 //s数据看板柱状图
 /**
@@ -62,6 +62,11 @@ export function getBarChart(data) {
     grid: {
       top: '15%',
     },
+    dataZoom: [
+      {
+        type: 'inside',
+      },
+    ],
     xAxis: [
       {
         type: 'category',

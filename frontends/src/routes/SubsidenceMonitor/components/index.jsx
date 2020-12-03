@@ -4,13 +4,13 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description:
- * @LastEditTime: 2020-11-27 15:12:27
+ * @LastEditTime: 2020-12-02 16:16:55
  */
 import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
 import Modal from '@Modal'
-import ChangeDetection from './ChangeDetection'
-import DistributedComputing from './DistributedComputing'
+import HiddenTrouble from './HiddenTrouble'
+import Subsidence from './Subsidence'
 import ProjectManagement from './ProjectManagement'
 import { observer, inject } from 'mobx-react'
 function Index({ RiverSandCapa, SubsidenceMonitor }) {
@@ -57,8 +57,8 @@ function Index({ RiverSandCapa, SubsidenceMonitor }) {
       >
         <>
           {componentKey === '项目管理' && <ProjectManagement />}
-          {componentKey === '沉降监测' && <DistributedComputing />}
-          {componentKey === '隐患排查' && <ChangeDetection />}
+          {componentKey === '沉降监测' && <Subsidence />}
+          {componentKey === '隐患排查' && <HiddenTrouble />}
         </>
       </Modal>
     </div>

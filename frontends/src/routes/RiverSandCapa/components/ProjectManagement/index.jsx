@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-24 18:45:04
+ * @LastEditTime: 2020-12-03 11:01:24
  */
 import React, { Component } from 'react'
 import {
@@ -156,7 +156,8 @@ class index extends Component {
     })
   }
   onFinish = async (values) => {
-    if (values.shpId) {
+    console.log(values)
+    if (!values.shpId) {
       message.error('项目文件为必传项')
       return
     }

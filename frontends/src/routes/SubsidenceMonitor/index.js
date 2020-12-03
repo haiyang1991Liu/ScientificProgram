@@ -4,12 +4,13 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 沉降监测
- * @LastEditTime: 2020-11-26 10:47:24
+ * @LastEditTime: 2020-12-01 14:20:38
  */
 
 import { inject, observer } from 'mobx-react'
 import React, { Component } from 'react'
 import SubsidenceMonitorLegend from '@assets/images/SubsidenceMonitorLegend.png';
+import MapTool from '@components/MapTool'
 import Options from './components';
 const style = {
   width: '3.85rem',
@@ -35,8 +36,8 @@ class ContructionProgress extends Component {
             alpha: true,
           },
         },
-        animation: true,
-        timeline: true,
+        animation: false,
+        timeline: false,
         shouldAnimate: true,
       })
     }
@@ -45,8 +46,9 @@ class ContructionProgress extends Component {
     return (
       <>
         <Options />
-        <div id="map3D"></div>
+        <div id="map3D" style={{width:'100%',height:'100%'}}></div>
         <img style={style} src={SubsidenceMonitorLegend} alt="" />
+        <MapTool />
       </>
     )
   }

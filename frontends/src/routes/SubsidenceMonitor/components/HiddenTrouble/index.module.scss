@@ -1,0 +1,13 @@
+.hidden_rouble {
+  &>div:first-child{
+    font-size: .16rem;
+    margin-bottom: .2rem;
+    &>button{
+      margin-left: .2rem;
+    }
+  }
+  .project_progress{
+    margin: 0 auto;
+    width: 80%;
+  }
+}

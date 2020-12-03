@@ -4,7 +4,7 @@
  * @Version: 1.0
  * @LastEditors: @yzcheng
  * @Description: 项目管理
- * @LastEditTime: 2020-11-27 17:05:27
+ * @LastEditTime: 2020-12-02 13:52:58
  */
 import React, { Component } from 'react'
 import {
@@ -20,6 +20,7 @@ import {
 } from 'antd'
 import Modal from '@Modal'
 import { observer, inject } from 'mobx-react'
+import Details from './details'
 import './index.scss'
 const { Option } = Select
 const layout = {
@@ -41,13 +42,15 @@ const tailLayout = {
     span: 13,
   },
 }
-@inject('RiverSandCapa','SubsidenceMonitor')
+@inject('RiverSandCapa', 'SubsidenceMonitor')
 @observer
 class index extends Component {
   constructor(props) {
     super()
     this.state = {
       visible: false,
+      visibleDetails: false,
+      DetailsData:null,
       fileList: [],
       isUpdata: false, //是否是更新
       uploading: false,
@@ -78,11 +81,16 @@ class index extends Component {
           render: (value, item, index) => {
             return (
               <>
-                <Button style={{ marginRight: '.1rem' }} type="primary" danger>
+                <Button
+                  onClick={this.details.bind(this, item)}
+                  style={{ marginRight: '.1rem' }}
+                  type="primary"
+                  danger
+                >
                   查看详情
                 </Button>
                 <Button
-                  onClick={this.updata.bind(this, item)}
+                  onClick={this.update.bind(this, item)}
                   style={{ marginRight: '.1rem' }}
                   danger
                   type="primary"
@@ -113,12 +121,29 @@ class index extends Component {
       isUpdata: false,
     })
   }
+  details = (item) => {
+     this.props.SubsidenceMonitor.updataSubsidenceList(item.id).then((res) => {
+       if (res.code === 200) {
+          this.setState({
+            visibleDetails: true,
+            DetailsData:res.data
+          })
+       } else {
+         message.error('数据获取失败请重新检查并操作')
+       }
+     })
+  }
   Delete(id) {
     this.props.RiverSandCapa.deleteListData(id)
   }
   hide = () => {
     this.setState({
       visible: false,
+    })
+  }
+  hideDetails = () => {
+    this.setState({
+      visibleDetails: false,
     })
   }
   Cancel = () => {
@@ -128,7 +153,7 @@ class index extends Component {
       visible: false,
     })
   }
-  updata(item) {
+  update(item) {
     this.formRef = React.createRef()
     this.setState({
       visible: true,
@@ -272,7 +297,15 @@ class index extends Component {
   }
   render() {
     const { SubsidenceMonitorData, tableLoading } = this.props.SubsidenceMonitor
-    const { visible, fileList, columns, uploading, isUpdata } = this.state
+    const {
+      visible,
+      visibleDetails,
+      fileList,
+      columns,
+      uploading,
+      isUpdata,
+      DetailsData,
+    } = this.state
     const props = {
       multiple: true,
       onRemove: (file) => {
@@ -312,7 +345,7 @@ class index extends Component {
             position: ['bottomCenter'],
             showSizeChanger: false,
           }}
-          scroll={{ x: '8rem' }}
+          scroll={{ x: '6.8rem' }}
           rowKey={(record) => record.id}
           dataSource={SubsidenceMonitorData}
           columns={columns}
@@ -456,6 +489,15 @@ class index extends Component {
               </Button>
             </Form.Item>
           </Form>
+        </Modal>
+        <Modal
+          onClose={this.hideDetails}
+          title={'项目详情'}
+          footer={null}
+          visible={visibleDetails}
+          create
+        >
+          <Details data={DetailsData} />
         </Modal>
       </div>
     )
